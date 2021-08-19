@@ -1,11 +1,10 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async (req, res) => {
-  const { items, email } = req.body;
+  
+  const { items, email, itemID } = req.body;
 
-  console.log(items);
-
-  const transformedItems = items.map((item) => ({
+  const transformedItems = items.map((item) => item.id === itemID && ({
     price_data: {
       currency: "vnd",
       product_data: {
@@ -18,12 +17,14 @@ export default async (req, res) => {
     quantity: 1,
   }));
 
+  const filteredItem = transformedItems.filter((item) => item !== false);
+
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     shipping_address_collection: {
       allowed_countries: ["VN"],
     },
-    line_items: transformedItems,
+    line_items: filteredItem,
     mode: "payment",
     success_url: "http://localhost:3000/success",
     cancel_url: "http://localhost:3000/cancel",
