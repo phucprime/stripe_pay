@@ -1,14 +1,15 @@
-# stripe - A fully integrated suite of payments products
+# stripe - A payment product suite that is completely integrated
 
-## Payments infrastructure for the internet
+## The internet's payment infrastructure
 
-Did you ever want to create an e-commerce platform and earn through it?
+Have you ever wanted to build an e-commerce platform and earn money from it?
 
-Millions of companies of all sizes—from startups to Fortune 500s—use Stripe’s software and APIs to accept payments, send payouts, and manage their businesses online.
+Stripe's software and APIs are used by millions of businesses of all sizes, from startups to Fortune 500s, to take payments, deliver payouts, and manage their businesses online.
 
 ![gif](https://github.com/phucprime/stripe_pay/blob/main/assets/tripe.gif)
 
-I'm using the next Image so I have to whitelist it in `next.config.js` also add the env key contain public and secret Stripe's API key:
+I'm using the Next Image, thus I need to whitelist it in `next.config.js`. Also, include the following `env` key, which contains both the public and secret Stripe API keys:
+
 ```javascript
 module.exports = {
   images: {
@@ -20,7 +21,8 @@ module.exports = {
 };
 ```
 
-Type of object which Stripe expects to receive:
+Stripe expects receiving the following object types:
+
 ```json
 {
     description: "description",
